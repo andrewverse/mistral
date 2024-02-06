@@ -10,7 +10,7 @@ from peft import prepare_model_for_kbit_training, LoraConfig, get_peft_model
 dataset = load_dataset("csv", data_files={
     "train": "data/train_data.csv",
     "validation": "data/validation_data.csv",
-})
+}, encoding="ISO-8859-1")
 
 # Login to Weights & Biases for experiment tracking
 wandb.login()
