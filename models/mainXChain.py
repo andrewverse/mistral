@@ -1,5 +1,4 @@
 from dotenv import load_dotenv
-import pandas as pd
 from langchain.chains import SequentialChain
 from summaryChain import summ_chain
 from ideaGenChain import idea_chain
