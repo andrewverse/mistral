@@ -13,7 +13,7 @@ summ_template = """
     Read the following article:
     {article}
     ---
-    Make a 3 bullet point list of the three key ideas from the article that are relevant to this type of person:
+    Make a bullet point list of the key ideas from the article that are relevant to this type of person:
     {user_profile}
     ---
 """
