@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
@@ -23,7 +24,7 @@ summ_prompt = ChatPromptTemplate.from_template(summ_template)
 
 # declare a model
 summ_model = (
-    ChatOpenAI(temperature=0)
+    ChatOpenAI(temperature=0.5)
 )
 
 # declare an output parser

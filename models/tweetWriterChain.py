@@ -1,3 +1,4 @@
+import os
 from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
@@ -24,7 +25,7 @@ tweet_prompt = ChatPromptTemplate.from_template(tweet_template)
 
 # declare a model
 tweet_model = (
-    ChatOpenAI(temperature=0.8)
+    ChatOpenAI(temperature=0.5)
 )
 
 # declare an output parser
