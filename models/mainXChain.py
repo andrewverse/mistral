@@ -16,7 +16,7 @@ load_dotenv()
 # Define Pydantic models for input and output
 class ChainInput(BaseModel):
     article: str
-    user_profile: Dict
+    user_profile: str
 
 class ChainOutput(BaseModel):
     summary: str
@@ -28,6 +28,16 @@ app = FastAPI(
   version="1.0",
   description="A simple API server for processing articles to tweets",
 )
+# please explain what this code does
+
+# Create the chain instance outside of the route to avoid reinitialization on each request
+overall_chain = SequentialChain(
+    chains=[summ_chain, idea_chain, tweet_chain],
+    input_variables=["article", "user_profile"],
+    output_variables=["summary", "tweetIdeas", "tweetDrafts"],
+    verbose=True
+)
+
 
 @app.post("/process-article", response_model=ChainOutput)
 async def process_article(input: ChainInput):
@@ -43,12 +53,5 @@ async def process_article(input: ChainInput):
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
 
-# Create the chain instance outside of the route to avoid reinitialization on each request
-overall_chain = SequentialChain(
-    chains=[summ_chain, idea_chain, tweet_chain],
-    input_variables=["article", "user_profile"],
-    output_variables=["summary", "tweetIdeas", "tweetDrafts"],
-    verbose=True
-)
 
 
