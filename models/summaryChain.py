@@ -11,11 +11,19 @@ load_dotenv()
 
 # create a template
 summ_template = """
-    Read the following article:
+    Carefully read the article below and distill its essence into key points. Consider the interests and background of the reader profile provided, highlighting aspects of the article they would find most compelling and useful.
+    
+    Article:
     {article}
-    ---
-    Make a bullet point list of the key ideas from the article that are relevant to this type of person:
+    
+    Reader Profile:
     {user_profile}
+    
+    Instructions:
+    - Extract the core message and key takeaways.
+    - Present them as concise, bullet-pointed highlights.
+    - Tailor the summary to resonate with the reader's specific interests and knowledge level.
+    
     ---
 """
 
