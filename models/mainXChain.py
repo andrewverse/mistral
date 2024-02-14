@@ -23,14 +23,15 @@ class ChainOutput(BaseModel):
     tweetIdeas: List[str]
     tweetDrafts: List[str]
 
+# Create FastAPI app to set up the API server
 app = FastAPI(
   title="LangChain Server",
   version="1.0",
   description="A simple API server for processing articles to tweets",
 )
-# please explain what this code does
 
-# Create the chain instance outside of the route to avoid reinitialization on each request
+# Create overall chain of to link summarization, idea generation, and tweet writing chains
+## Create the chain instance outside of the route to avoid reinitialization on each request
 overall_chain = SequentialChain(
     chains=[summ_chain, idea_chain, tweet_chain],
     input_variables=["article", "user_profile"],
@@ -38,20 +39,27 @@ overall_chain = SequentialChain(
     verbose=True
 )
 
-
+# This route will take an article and user profile, and return the summary, tweet ideas, and tweet drafts
 @app.post("/process-article", response_model=ChainOutput)
 async def process_article(input: ChainInput):
-    # Invoke chain with the input from the request
+    """Generate summary, tweet ideas, and drafts based on article and user profile.
+
+    Args:
+        input (ChainInput): Contains article and user profile.
+
+    Returns:
+        ChainOutput: Populated with summary, ideas, and drafts.
+    """
+    
+    # Invoke LangChain overall_chain
     result = overall_chain.invoke(
         {
             "article": input.article,
             "user_profile": input.user_profile
         }
     )
+    
     return ChainOutput(**result)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
-
-
-
