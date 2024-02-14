@@ -4,8 +4,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from userProfile import user_profile
-from ideaGenChain import tweetIdeas
+#from userProfile import user_profile
+#from ideaGenChain import tweetIdeas
 
 load_dotenv()
 
@@ -38,13 +38,3 @@ tweet_chain = (
     | tweet_model
     | tweet_output_parser
 )
-
-# invoke chain
-tweetDrafts = tweet_chain.invoke(
-    {
-        "tweetIdeas": tweetIdeas,
-        "user_profile": user_profile
-    }
-)
-
-print(tweetDrafts)

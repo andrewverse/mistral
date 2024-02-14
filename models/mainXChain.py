@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import List, Dict
 from dotenv import load_dotenv
-from langchain.chains import SequentialChain
 from summaryChain import summ_chain
 from ideaGenChain import idea_chain
 from tweetWriterChain import tweet_chain

@@ -4,8 +4,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from userProfile import user_profile
-from articles import article
+#from userProfile import user_profile
+#from articles import article
 
 load_dotenv()
 
@@ -37,13 +37,3 @@ summ_chain = (
     | summ_model
     | summ_output_parser
 )
-
-# invoke chain
-summary = summ_chain.invoke(
-    {
-        "article": article,
-        "user_profile": user_profile
-    }
-)
-
-print(summary)
