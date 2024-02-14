@@ -4,18 +4,26 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from userProfile import user_profile
-from articles import article
+#from userProfile import user_profile
+#from articles import article
 
 load_dotenv()
 
 # create a template
 summ_template = """
-    Read the following article:
+    Carefully read the article below and distill its essence into key points. Consider the interests and background of the reader profile provided, highlighting aspects of the article they would find most compelling and useful.
+    
+    Article:
     {article}
-    ---
-    Make a bullet point list of the key ideas from the article that are relevant to this type of person:
+    
+    Reader Profile:
     {user_profile}
+    
+    Instructions:
+    - Extract the core message and key takeaways.
+    - Present them as concise, bullet-pointed highlights.
+    - Tailor the summary to resonate with the reader's specific interests and knowledge level.
+    
     ---
 """
 
@@ -37,13 +45,3 @@ summ_chain = (
     | summ_model
     | summ_output_parser
 )
-
-# invoke chain
-summary = summ_chain.invoke(
-    {
-        "article": article,
-        "user_profile": user_profile
-    }
-)
-
-print(summary)

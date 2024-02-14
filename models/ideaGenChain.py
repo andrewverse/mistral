@@ -4,20 +4,29 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from userProfile import user_profile
-from summaryChain import summary
+#from userProfile import user_profile
+#from summaryChain import summary
 
 load_dotenv()
 
 # create a template
 idea_template = """
-    Generate a list of 10 tweet ideas based on the following article summary.
+    Utilizing the article summary provided, craft 10 creative and engaging brief insights. 
+    These brief insights should encapsulate the article's insights and be tailored to the reader's interests and background. 
+    Remember, each breif insight should stand on its own as a compelling piece of writing.
+
+    Article Summary:
     {summary}
-    ---
-    Make each tweet under 280 characters long.
-    ---
-    Keep in the tweets relevant to the following user profile:
+    
+    Reader Profile:
     {user_profile}
+    
+    Instructions:
+    - Ensure each brief insight is succinct, not exceeding 500 characters.
+    - Focus on sparking curiosity and providing value.
+    - Infuse a tone that aligns with the reader's perspective and interests.
+    
+    ---
 """
 
 # assign template to prompt
@@ -38,13 +47,3 @@ idea_chain = (
     | idea_model
     | idea_output_parser
 )
-
-# invoke chain
-tweetIdeas = idea_chain.invoke(
-    {
-        "summary": summary,
-        "user_profile": user_profile
-    }
-)
-
-print(tweetIdeas)

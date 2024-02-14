@@ -1,0 +1,15 @@
+
+OLD PROMPTS
+{
+    "tweetDrafts": "1. \"Discover how AI is revolutionizing learning, making it easier and faster to acquire new skills. Embrace the future of education! #AI #learningcurve\"\n\n2. \"Don't let complex subjects intimidate you! AI can be your personal tutor, breaking down information and boosting your confidence. Start mastering new subjects today! #AI #education\"\n\n3. \"AI enhances critical thinking instead of replacing it. Embrace the power of human intelligence combined with AI capabilities for smarter decision-making. #AI #criticalthinking\""
+}
+
+NEW PROMPTS
+{
+    "tweetDrafts": "Refined Tweets:\n\n1. Discover how AI empowers everyone to learn, breaking down barriers and democratizing access to technology and knowledge. #AI #Technology #Learning\n\n2. Don't fear AI taking your job! Embrace the evidence that shows AI creates new opportunities alongside displacing certain roles. #AI #Jobs #Opportunities\n\n3. Say goodbye to complex subjects! Let AI be your personal tutor, simplifying information and making learning effortless. #AI #Education #Learning\n\nThese refined tweets focus on the potential impact and engagement while aligning with the reader's profile. The language is more impactful and memorable, and the tone is positive and encouraging. They are optimized for social media engagement by being concise and free of special characters, emojis, or hashtags."
+}
+
+NEWER PROMPTS
+{
+    "tweetDrafts": "1. Discover how AI can be your personal tutor, unlocking the power of accelerated learning. Embrace the future of education and conquer complex subjects with ease! #AI #Education\n2. Don't fear job displacement! AI is creating new opportunities that can open doors for your career. Explore how AI is reshaping the job market and propelling you towards success! #AI #CareerGrowth\n3. Mid-career professional? AI can fast-track your skills development, helping you thrive in a rapidly changing world. Embrace the power of AI to unlock new career possibilities! #AI #SkillsDevelopment"
+}
